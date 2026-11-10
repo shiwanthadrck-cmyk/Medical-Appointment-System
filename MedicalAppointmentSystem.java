@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 /*
- * ==========================================================================
+ * =======================================================================
  *  MEDICAL APPOINTMENT BOOKING SYSTEM  (Doctor Channelling System)
- *  Unit 19 - Data Structures and Algorithms
+ *  
  *
  *  Data structures used (matches the design specification / report):
  *    - Singly Linked List  -> Patients, Doctors, Appointments
- *    - Queue ADT (FIFO)    -> Waiting list handling, implemented on top of
+ *     Queue ADT (FIFO)    -> Waiting list handling, implemented on top of
  *                              the Appointment linked list ("Waiting" status)
  *    - Stack ADT (LIFO)    -> Patient History Stack, used to retrieve
  *                              registered patients from newest to oldest
- *                              (Activity 3 requirement)
+ *                             
  *    - Sorting Algorithms  -> Bubble Sort & Selection Sort, used to sort
  *                              patients by age
  *
@@ -19,7 +19,7 @@ import java.util.Scanner;
  *  structures - no java.util.LinkedList / Stack / Queue / Collections.sort
  *  is used, since the whole point of the assignment is to build and
  *  reason about these structures ourselves.
- * ==========================================================================
+ * =============================================================
  */
 public class MedicalAppointmentSystem {
 
@@ -135,11 +135,11 @@ class AppointmentNode {
     }
 }
 
-/* ==========================================================================
+/* =====================================================================
  *  STACK ADT  (Imperative definition: Push, Pop, Peek, isEmpty, Size)
  *  Implemented using a linked list - used only for the Patient History
  *  Stack so that the newest registered patient can always be retrieved
- *  first (LIFO), satisfying Activity 3.
+ *  first (LIFO)
  * ========================================================================== */
 class StackNode {
     PatientNode patient;
@@ -214,7 +214,7 @@ class PatientHistoryStack {
     }
 }
 
-/* ==========================================================================
+/* =========================================================================
  *  MAIN SYSTEM CLASS
  * ========================================================================== */
 class DoctorChannelingSystem {
@@ -242,7 +242,7 @@ class DoctorChannelingSystem {
 
     /* ---------------------------------------------------------------
      *  MENU
-     * --------------------------------------------------------------- */
+     * -------------------------------------------------------------- */
     void runMenu() {
         boolean running = true;
         while (running) {
@@ -402,7 +402,7 @@ class DoctorChannelingSystem {
         return null;
     }
 
-    /* ---------------------------------------------------------------
+    /* --------------------------------------------------------------
      *  DOCTOR MANAGEMENT
      * --------------------------------------------------------------- */
 
@@ -503,9 +503,9 @@ class DoctorChannelingSystem {
         return null;
     }
 
-    /* ---------------------------------------------------------------
-     *  APPOINTMENT MANAGEMENT  (Queue ADT - FIFO waiting list)
-     * --------------------------------------------------------------- */
+    /* ------------------------
+     *  APPOINTMENT MANAGEMENT  
+     * ---------------------------------------------------- */
 
     // bookAppointment() - validates patient & doctor, then either books a
     // slot or (if the doctor is fully booked) enqueues the patient into
@@ -550,9 +550,7 @@ class DoctorChannelingSystem {
         }
     }
 
-    // enqueueAppointment() - inserts an appointment node at the end of the
-    // appointment linked list (this is the "enqueue" operation of the
-    // Queue ADT used for FIFO handling of the waiting list)
+    
     void enqueueAppointment(AppointmentNode node) {
         if (appointmentHead == null) {
             appointmentHead = node;
@@ -566,7 +564,7 @@ class DoctorChannelingSystem {
     }
 
     // cancelAppointment() - marks an appointment as Cancelled, frees the
-    // doctor's slot, then calls assignNextWaitingPatient() (dequeue logic)
+    // doctor's slot, then calls assignNextWaitingPatient() 
     void cancelAppointment() {
         System.out.println("\n--- Cancel Appointment ---");
         System.out.print("Enter Appointment ID: ");
@@ -650,7 +648,7 @@ class DoctorChannelingSystem {
                 System.out.println("Next waiting patient (" + patientName +
                         ") has been assigned slot " + current.slotNumber +
                         " with Dr. " + doctor.name + " and notified.");
-                return; // FIFO - only the first match is served
+                return; 
             }
             current = current.next;
         }
@@ -746,7 +744,7 @@ class DoctorChannelingSystem {
                     swapped = true;
                 }
             }
-            if (!swapped) break; // already sorted - early exit
+            if (!swapped) break; 
         }
         System.out.println("\n--- Patients Sorted by Age (Bubble Sort) ---");
         System.out.println("Total comparisons made: " + comparisons);
